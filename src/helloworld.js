@@ -96,3 +96,78 @@ console.log(symbol);
 
 console.log(data);
 console.log(undef);
+
+// Promises
+const fetchData = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Data fetched successfully!");
+    }, 2000);
+  });
+};
+
+fetchData()
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
+// Symbol
+const uniqueKey = Symbol("uniqueKey");
+const obj = {
+  [uniqueKey]: "This is a symbol key",
+};
+
+console.log(obj[uniqueKey]);
+
+// Default Parameters
+function greet(name = "Guest") {
+  console.log(`Hello, ${name}!`);
+}
+
+greet(); // Hello, Guest!
+greet("Alice"); // Hello, Alice!
+
+// Function Rest Parameter
+function sum(...numbers) {
+  return numbers.reduce((acc, num) => acc + num, 0);
+}
+
+console.log(sum(1, 2, 3, 4, 5)); // 15
+
+// String.includes()
+const sentence = "The quick brown fox jumps over the lazy dog";
+console.log(sentence.includes("fox")); // true
+
+// String.startsWith()
+console.log(sentence.startsWith("The")); // true
+
+// String.endsWith()
+console.log(sentence.endsWith("dog")); // true
+
+// Array.from()
+const iterable = "12345";
+const numArray = Array.from(iterable, (char) => parseInt(char));
+console.log(numArray); // [1, 2, 3, 4, 5]
+
+// Array.keys()
+const fruits = ["apple", "banana", "cherry"];
+const keys = Array.from(fruits.keys());
+console.log(keys); // [0, 1, 2]
+
+// Array.find()
+const users = [
+  { id: 1, name: "Alice" },
+  { id: 2, name: "Bob" },
+  { id: 3, name: "Charlie" },
+];
+
+const foundUser = users.find((user) => user.id === 2);
+console.log(foundUser); // { id: 2, name: "Bob" }
+
+// Array.findIndex()
+const ages = [25, 30, 35, 40, 45];
+const index = ages.findIndex((age) => age >= 35);
+console.log(index); // 2
